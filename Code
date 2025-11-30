@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fire and Ice Game</title>
+  <style>
+    body { display:flex; justify-content:center; align-items:center; height:100vh; background:#111; color:white; font-family:sans-serif; }
+    #game { width:300px; height:300px; border:2px solid white; position:relative; }
+    .ball { width:30px; height:30px; border-radius:50%; position:absolute; top:135px; left:135px; }
+    .red { background:red; }
+    .blue { background:blue; }
+  </style>
+</head>
+<body>
+  <div id="game">
+    <div class="ball red" id="redBall"></div>
+    <div class="ball blue" id="blueBall"></div>
+  </div>
+  <script>
+    const red = document.getElementById("redBall");
+    const blue = document.getElementById("blueBall");
+    let angle = 0;
+
+    function moveBalls() {
+      angle += 0.05;
+      red.style.left = 135 + 100 * Math.cos(angle) + "px";
+      red.style.top = 135 + 100 * Math.sin(angle) + "px";
+      blue.style.left = 135 + 100 * Math.cos(angle + Math.PI) + "px";
+      blue.style.top = 135 + 100 * Math.sin(angle + Math.PI) + "px";
+      requestAnimationFrame(moveBalls);
+    }
+
+    moveBalls();
+  </script>
+</body>
+</html>
